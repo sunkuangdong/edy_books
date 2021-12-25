@@ -1,4 +1,5 @@
 const Koa = require('koa');
+const config = require('./config/index')
 
 const app = new Koa();
 
@@ -7,6 +8,6 @@ app.use(ctx => {
 })
 
 // 监听本地3000端口
-app.listen(3000, () => {
-    console.log("server is running at http://localhost:3000");
+app.listen(config.port, () => {
+    console.log(`server is running at http://localhost:${config.port}`);
 })
