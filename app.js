@@ -4,7 +4,7 @@ const config = require('./config/index')
 const app = new Koa();
 
 app.use(ctx => {
-    ctx.body = 'hello world'
+    ctx.body = 'hello world books'
 })
 
 // 监听本地3000端口
