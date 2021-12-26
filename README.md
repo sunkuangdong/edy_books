@@ -39,3 +39,8 @@ index.js 路由入口，每个路由做的事情抽离出去
 ```
 koa-static 启动一个静态资源服务器
 ```
+
+#### 路由进行重新定向：解决切换路由后无法访问静态资源问题
+```
+koa2-connect-history-api-fallback
+```

@@ -8,7 +8,21 @@ const render = require('koa-swig')
 const co = require('co')
 // 静态资源服务
 const staticSever = require('koa-static')
+
+// 路由处理
+const {
+    historyApiFallback
+} = require('koa2-connect-history-api-fallback');
+
 const app = new Koa();
+
+// whiteList 白名单机制
+// 白名单是有些路由不会被重定向
+// index 是当切换路由的时候给你重定向到什么位置
+app.use(historyApiFallback({
+    index: "/",
+    whiteList: ['/api']
+}))
 
 // 指定我们的静态资源文件，查找静态资源会去assets目录下
 app.use(staticSever(config.staticDir));
