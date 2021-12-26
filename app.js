@@ -3,16 +3,26 @@ const config = require('./config/index')
 // 路由入口
 const initController = require('./controllers/index')
 
+// 模板渲染
 const render = require('koa-swig')
 const co = require('co')
-
+// 静态资源服务
+const staticSever = require('koa-static')
 const app = new Koa();
+
+// 指定我们的静态资源文件，查找静态资源会去assets目录下
+app.use(staticSever(config.staticDir));
+
 // 路由初始化
 initController(app)
+
+
+
 
 // context - ctx
 // 全局挂在 render 方法，实行模板渲染
 // 渲染的时候会去 views 中查找
+// console.log("config.viewDir:", config.viewDir)
 app.context.render = co.wrap(render({
     root: config.viewDir,
     // 生产环境不能有缓存

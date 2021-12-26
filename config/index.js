@@ -1,7 +1,8 @@
 const path = require('path')
 // 公共配置
 let config = {
-    viewDir: path.join(__dirname, '../', "views")
+    viewDir: path.join(__dirname, '../', "views"), // 模板
+    staticDir: path.join(__dirname, '../', "assets") // 静态资源
 };
 
 // 开发环境下的配置
