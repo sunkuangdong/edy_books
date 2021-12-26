@@ -14,6 +14,9 @@ const {
     historyApiFallback
 } = require('koa2-connect-history-api-fallback');
 
+// 自己的错误处理中间件
+const errorHandler = require("./middlewares/ErrorHandler")
+
 const app = new Koa();
 
 // whiteList 白名单机制
@@ -27,6 +30,7 @@ app.use(historyApiFallback({
 // 指定我们的静态资源文件，查找静态资源会去assets目录下
 app.use(staticSever(config.staticDir));
 
+errorHandler.error(app)
 // 路由初始化
 initController(app)
 

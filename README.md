@@ -43,4 +43,9 @@ koa-static 启动一个静态资源服务器
 #### 路由进行重新定向：解决切换路由后无法访问静态资源问题
 ```
 koa2-connect-history-api-fallback
+
+1. 这里我们会请求/about路由
+2. 然后会请求后端的/about 如果后端没有就404
+3. 然后 historyApiFallback 将请求重定向到根路由
+4. 页面url /about Vue router 跳转到 /about 页面
 ```
