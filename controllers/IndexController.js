@@ -7,8 +7,9 @@ class IndexController extends Controller {
         super()
     }
 
-    actionIndex(ctx) {
-        ctx.body = "actionIndex"
+    // 利用全局 ctx render 进行渲染
+    async actionIndex(ctx) {
+        ctx.body = await ctx.render("index")
     }
 }
 

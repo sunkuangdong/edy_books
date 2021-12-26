@@ -1,10 +1,14 @@
+const path = require('path')
 // 公共配置
-let config = {};
+let config = {
+    viewDir: path.join(__dirname, '../', "views")
+};
 
 // 开发环境下的配置
 if (process.env.NODE_ENV !== 'production') {
     const devConfig = {
-        port: 3000
+        port: 3000,
+        cache: false,
     }
     config = {
         ...config,
@@ -15,7 +19,8 @@ if (process.env.NODE_ENV !== 'production') {
 // 生产环境下的配置
 if (process.env.NODE_ENV === 'production') {
     const devConfig = {
-        port: 80
+        port: 80,
+        cache: 'memory',
     }
     config = {
         ...config,
