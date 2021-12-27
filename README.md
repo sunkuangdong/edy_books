@@ -49,3 +49,9 @@ koa2-connect-history-api-fallback
 3. 然后 historyApiFallback 将请求重定向到根路由
 4. 页面url /about Vue router 跳转到 /about 页面
 ```
+
+#### 模板冲突
+```
+vue 的插值表达式和 koa-swig 的冲突
+可以重新定义 koa-swig 模板, app 的render中定义：varControls (必须是两个)
+```

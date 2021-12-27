@@ -45,6 +45,8 @@ app.context.render = co.wrap(render({
     root: config.viewDir,
     // 生产环境不能有缓存
     cache: config.cache,
+    // 更改 koa-swig 配置
+    varControls: ["[[", "]]"]
 }))
 
 // 监听本地3000端口

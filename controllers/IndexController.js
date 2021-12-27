@@ -9,8 +9,10 @@ class IndexController extends Controller {
 
     // 利用全局 ctx render 进行渲染
     async actionIndex(ctx) {
-        throw new Error("自定义错误")
-        ctx.body = await ctx.render("index")
+        // throw new Error("自定义错误")
+        ctx.body = await ctx.render("index", {
+            message: "服务端输入数据"
+        });
     }
 }
 
