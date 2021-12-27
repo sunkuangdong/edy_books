@@ -55,3 +55,10 @@ koa2-connect-history-api-fallback
 vue 的插值表达式和 koa-swig 的冲突
 可以重新定义 koa-swig 模板, app 的render中定义：varControls (必须是两个)
 ```
+
+#### babel
+```
+解决浏览器不支持ES6语法的情况
+使用System进行模块导入导出，但是浏览器不支持，根目录下创建.babelrc，自动会去这里查找配置项
+运行yarn build
+```

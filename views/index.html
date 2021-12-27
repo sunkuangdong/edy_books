@@ -16,7 +16,24 @@
         <div>{{message}}</div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <script src="https://cdn.staticfile.org/systemjs/6.11.0/system.min.js"></script>
     <script src="js/index.js"></script>
+    <!-- 浏览器原生就支持ES6语法 会进入 module -->
+    <script type="module">
+        import("/js/data.js").then((res) => {
+            console.log("res1", res.default)
+        })
+    </script>
+    <!-- 
+        如果不支持ES6语法会进入 nomodule
+        我们需要用System进行模块化，但是System需要进行编译使用
+        要用 babel 进行编译
+    -->
+    <script nomodule>
+        System.import("/js/data_bundle.js").then(res => {
+            console.log("res2", res.default)
+        })
+    </script>
 </body>
 
 </html>
