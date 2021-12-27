@@ -62,3 +62,21 @@ vue 的插值表达式和 koa-swig 的冲突
 使用System进行模块导入导出，但是浏览器不支持，根目录下创建.babelrc，自动会去这里查找配置项
 运行yarn build
 ```
+
+#### 完善MVC
+#### 完善项目工程化
+```
+测试
+
+模块化改造
+
+错误日志记录库：log4 js
+    - yarn add log4js
+    - 日志时间
+    - 日志级别
+    - 日志分类
+
+之前做了一个简单的错误捕获：ErrorHandler
+    - 在app.js中将我们的logger传递进去
+    - 用logger.error(error.message)来捕获我们的错误并且生成日志
+```

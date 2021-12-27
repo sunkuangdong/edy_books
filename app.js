@@ -17,6 +17,36 @@ const {
 // 自己的错误处理中间件
 const errorHandler = require("./middlewares/ErrorHandler")
 
+// 错误日志
+const log4js = require("log4js");
+log4js.configure({
+    appenders: {
+        globalError: {
+            type: "file",
+            filename: "./logs/error.log"
+        },
+        infoError:{
+            type: "file",
+            filename: "./logs/info.log"
+        }
+    },
+    categories: {
+        default: {
+            appenders: ["globalError"],
+            level: "error"
+        },
+        info: {
+            appenders: ["infoError"],
+            level: "info"
+        }
+    }
+});
+const logger = log4js.getLogger("error");
+const loggerInfo = log4js.getLogger("info");
+loggerInfo.info("Cheese is Comté.");
+logger.error("Cheese is too ripe!");
+logger.fatal("Cheese was breeding ground for listeria.");
+
 const app = new Koa();
 
 // whiteList 白名单机制
@@ -30,7 +60,7 @@ app.use(historyApiFallback({
 // 指定我们的静态资源文件，查找静态资源会去assets目录下
 app.use(staticSever(config.staticDir));
 
-errorHandler.error(app)
+errorHandler.error(app, logger)
 // 路由初始化
 initController(app)
 
