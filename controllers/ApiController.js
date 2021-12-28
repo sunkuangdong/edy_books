@@ -1,20 +1,15 @@
 import Controller from './controllers'
-
+import BooksModel from '../models/BooksModel'
+const booksModel = new BooksModel()
 // 继承 Controller 类
 class ApiController extends Controller {
     constructor() {
         super()
+        this.booksList = null
     }
-    actionDateList(ctx) {
-        ctx.body = [{
-                id: 1,
-                data: 'a'
-            },
-            {
-                id: 2,
-                data: 'b'
-            },
-        ]
+    async actionDateList(ctx) {
+        this.booksList = await booksModel.getBooksList()
+        ctx.body = this.booksList.data
     }
 }
 export default ApiController
