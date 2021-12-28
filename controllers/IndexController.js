@@ -1,5 +1,5 @@
 // 首页路由处理
-const Controller = require('./controllers')
+import Controller from './controllers'
 
 // 继承 Controller 类
 class IndexController extends Controller {
@@ -16,4 +16,4 @@ class IndexController extends Controller {
     }
 }
 
-module.exports = IndexController
+export default IndexController

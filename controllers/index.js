@@ -1,12 +1,12 @@
 // 统一入口
 // 统一入口将其他入口引入
-const Router = require('@koa/router')
-const router = new Router()
-const IndexController = require('./IndexController')
-const IndexControllers = new IndexController()
-
+import Router from '@koa/router'
+import IndexController from './IndexController'
 // 接口路由
-const ApiController = require('./ApiController')
+import ApiController from './ApiController'
+
+const router = new Router()
+const IndexControllers = new IndexController()
 const ApiControllers = new ApiController()
 
 function initController(app) {
@@ -26,4 +26,4 @@ function initController(app) {
         .use(router.allowedMethods())
 }
 
-module.exports = initController;
+export default initController;

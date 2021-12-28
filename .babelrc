@@ -1,4 +1,5 @@
 {
     // 将 ES6 语法转变成 systemjs 规则
-    "plugins": ["@babel/plugin-transform-modules-systemjs"]
+    // "plugins": ["@babel/plugin-transform-modules-systemjs"]
+    "presets": ["@babel/preset-env"]
 }

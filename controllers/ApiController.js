@@ -1,4 +1,4 @@
-const Controller = require('./controllers')
+import Controller from './controllers'
 
 // 继承 Controller 类
 class ApiController extends Controller {
@@ -17,4 +17,4 @@ class ApiController extends Controller {
         ]
     }
 }
-module.exports = ApiController
+export default ApiController

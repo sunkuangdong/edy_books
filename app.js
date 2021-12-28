@@ -1,31 +1,29 @@
-const Koa = require('koa');
-const config = require('./config/index')
+import Koa from 'koa';
+import config from './config/index'
 // 路由入口
-const initController = require('./controllers/index')
+import initController from './controllers/index'
 
 // 模板渲染
-const render = require('koa-swig')
-const co = require('co')
+import render from 'koa-swig'
+import co from 'co'
 // 静态资源服务
-const staticSever = require('koa-static')
+import staticSever from 'koa-static'
 
 // 路由处理
-const {
-    historyApiFallback
-} = require('koa2-connect-history-api-fallback');
+import historyApiFallback from 'koa2-connect-history-api-fallback'
 
 // 自己的错误处理中间件
-const errorHandler = require("./middlewares/ErrorHandler")
+import errorHandler from "./middlewares/ErrorHandler"
 
 // 错误日志
-const log4js = require("log4js");
+import log4js from "log4js"
 log4js.configure({
     appenders: {
         globalError: {
             type: "file",
             filename: "./logs/error.log"
         },
-        infoError:{
+        infoError: {
             type: "file",
             filename: "./logs/info.log"
         }

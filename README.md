@@ -64,11 +64,18 @@ vue 的插值表达式和 koa-swig 的冲突
 ```
 
 #### 完善MVC
+```
+module
+```
 #### 完善项目工程化
 ```
 测试
 
 模块化改造
+    - ES6 语法
+    - @babel/preset-env 插件集合，将ES6 ES5等统一了
+    - package.json中 --exec 是执行一条命令 执行后面引号内的命令
+    - 'babel-node ./app.js' 用 babel-node 对ESModule模块化进行编译
 
 错误日志记录库：log4 js
     - yarn add log4js

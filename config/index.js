@@ -1,4 +1,4 @@
-const path = require('path')
+import path from 'path'
 // 公共配置
 let config = {
     viewDir: path.join(__dirname, '../', "views"), // 模板
@@ -29,4 +29,4 @@ if (process.env.NODE_ENV === 'production') {
     }
 }
 
-module.exports = config
+export default config
