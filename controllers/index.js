@@ -4,18 +4,17 @@ import Router from '@koa/router'
 import IndexController from './IndexController'
 // 接口路由
 import ApiController from './ApiController'
+import BooksController from './BooksController'
 
 const router = new Router()
 const IndexControllers = new IndexController()
 const ApiControllers = new ApiController()
+const booksController = new BooksController()
 
 function initController(app) {
-    // router.get('/', (ctx, next) => {
-    //     ctx.body = "hello 2"
-    // })
-
-    // 每个路由做的事情抽离出去
+    // 每个页面路由路由做的事情抽离出去
     router.get('/', IndexControllers.actionIndex)
+    router.get('/books/list', booksController.actionBooksListPage)
 
     // 用路由模拟后台接口
     router.get('/api/getDateList', ApiControllers.actionDateList)

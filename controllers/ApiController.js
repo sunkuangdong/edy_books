@@ -5,11 +5,10 @@ const booksModel = new BooksModel()
 class ApiController extends Controller {
     constructor() {
         super()
-        this.booksList = null
     }
     async actionDateList(ctx) {
-        this.booksList = await booksModel.getBooksList()
-        ctx.body = this.booksList.data
+        const booksList = await booksModel.getBooksList()
+        ctx.body = booksList.data
     }
 }
 export default ApiController

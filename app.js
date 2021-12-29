@@ -13,7 +13,7 @@ import staticSever from 'koa-static'
 import historyApiFallback from 'koa2-connect-history-api-fallback'
 
 // 自己的错误处理中间件
-import errorHandler from "./middlewares/ErrorHandler"
+import ErrorHandler from "./middlewares/ErrorHandler"
 
 // 错误日志
 import log4js from "log4js"
@@ -52,13 +52,13 @@ const app = new Koa();
 // index 是当切换路由的时候给你重定向到什么位置
 app.use(historyApiFallback({
     index: "/",
-    whiteList: ['/api']
+    whiteList: ["/books", '/api']
 }))
 
 // 指定我们的静态资源文件，查找静态资源会去assets目录下
 app.use(staticSever(config.staticDir));
 
-errorHandler.error(app, logger)
+ErrorHandler.error(app, logger)
 // 路由初始化
 initController(app)
 

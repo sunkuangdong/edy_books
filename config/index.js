@@ -8,7 +8,7 @@ let config = {
 // 开发环境下的配置
 if (process.env.NODE_ENV !== 'production') {
     const devConfig = {
-        port: 3000,
+        port: 3030,
         cache: false,
     }
     config = {

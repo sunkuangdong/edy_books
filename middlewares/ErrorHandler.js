@@ -4,7 +4,7 @@ class ErrorHandler {
             try {
                 await next();
                 if (ctx.status === 404) {
-                    ctx.body = "有好的404页面"
+                    ctx.body = "友好的404页面"
                 }
             } catch (error) {
                 logger.error(error.message)
