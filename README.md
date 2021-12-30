@@ -94,3 +94,15 @@ controllers
     - 在app.js中将我们的logger传递进去
     - 用logger.error(error.message)来捕获我们的错误并且生成日志
 ```
+
+## 测试
+#### 工具： Playwright mocha
+```
+Playwright 进行页面测试： e2e测试
+    - 安装： yarn add playwright -D
+    - 链接： https://www.npmjs.com/package/playwright
+    - Playwright 会进行截图每一步，然后保存在你的文件下
+mocha 进行接口测试
+    - 安装： yarn add mocha -D
+    - 链接： https://www.npmjs.com/package/mocha
+```
