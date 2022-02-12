@@ -1,34 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "../../layouts/layout.html" %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>图书列表</title>
-</head>
+{% block title %} 图书列表页 {% endblock %}
 
-<body>
-    <ul>
-        {% for item in data %}
-        <li>[[item.id]]-[[item.name]]</li>
-        {% endfor %}
-    </ul>
-    <!-- <button id="btn">click</button> -->
-    <script src="/js/myUtils.js"></script>
-    <script>
-        _.each([1, 2, 3], (item, index) => {
-            console.log(index, item)
-        })
-        const fn = () => {
-            console.log("点击时间节流")
-        }
-        const result = _.throttle(fn, 2000)
-        document.getElementById('btn').onclick = result
-        // _([1, 2, 3]).each((item, index) => {
-        //     console.log(index, item)
-        // })
-    </script>
-</body>
+{% block head %}
+<style>
+    body {
+        background-color: rebeccapurple;
+    }
+</style>
+{% endblock %}
 
-</html>
+{% block content %}
+{% include "../../../components/nav/nav.html" %}
+<ul>
+    {% for item in data %}
+    <li>[[item.id]]-[[item.name]]</li>
+    {% endfor %}
+</ul>
+{% endblock %}

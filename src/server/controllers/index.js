@@ -15,6 +15,7 @@ function initController(app) {
     // 每个页面路由路由做的事情抽离出去
     router.get('/', IndexControllers.actionIndex)
     router.get('/books/list', booksController.actionBooksListPage)
+    router.get('/books/create', booksController.actionBooksCreatePage)
 
     // 用路由模拟后台接口
     router.get('/api/getDateList', ApiControllers.actionDateList)
