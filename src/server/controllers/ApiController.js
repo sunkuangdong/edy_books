@@ -7,8 +7,9 @@ class ApiController extends Controller {
         super()
     }
     async actionDateList(ctx) {
-        const booksList = await booksModel.getBooksList()
-        ctx.body = booksList.data
+        // const booksList = await booksModel.getBooksList()
+        // ctx.body = booksList.data
+        ctx.body = "图书列表"
     }
 }
 export default ApiController

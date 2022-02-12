@@ -10,7 +10,6 @@
     "server:dev": "scripty",
     "server:prod": "scripty",
     "jscpd": "jscpd './demo/test.js'",
-    "start": "NODE_ENV=development nodemon --exec 'babel-node ./app.js'",
     "build": "npm run client:prod & npm run server:prod",
     "test:e2e": "node tests/e2e/e2e.test.js",
     "test:api": "mocha --file ./tests/mocha/api.test.js"

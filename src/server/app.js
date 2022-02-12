@@ -1,7 +1,7 @@
 import Koa from 'koa';
-import config from './config/index'
+import config from './config'
 // 路由入口
-import initController from './controllers/index'
+import initController from './controllers'
 
 // 模板渲染
 import render from 'koa-swig'

@@ -1,8 +1,8 @@
 import path from 'path'
 // 公共配置
 let config = {
-    viewDir: path.join(__dirname, '../', "views"), // 模板
-    staticDir: path.join(__dirname, '../', "assets") // 静态资源
+    viewDir: path.join(__dirname, '../../', "web/views"), // 模板
+    staticDir: path.join(__dirname, '../../', "web/assets") // 静态资源
 };
 
 // 开发环境下的配置
