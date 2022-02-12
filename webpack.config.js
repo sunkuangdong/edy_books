@@ -2,15 +2,26 @@ const {argv} = require("yargs")
 const {merge} = require("webpack-merge")
 const glob = require("glob")
 const path = require("path")
+const htmlWebpackPlugin = require("html-webpack-plugin")
 const mode = argv.mode || "development"
 const envConfig = require(`./build/webpack.${mode}.js`)
 const files = glob.sync("./src/web/views/**/*.entry.js")
 
 const entries = {}
 
+const htmlPlugins = []
+
 files.forEach(url => {
     if (/([a-zA-Z]+-[a-zA-Z]+)\.entry\.js/.test((url))) {
-        entries[RegExp.$1] = url
+        const entryKey = RegExp.$1
+        const [pagesName, template] = entryKey.split("-")
+        htmlPlugins.push(new htmlWebpackPlugin({
+                filename: `../views/${pagesName}/pages/${template}.html`,
+                template: `./src/web/views/${pagesName}/pages/${template}.html`,
+                chunks: [entryKey]
+            }
+        ))
+        entries[entryKey] = url
     }
 })
 const baseConfig = {
@@ -27,7 +38,10 @@ const baseConfig = {
                 use: ["babel-loader"]
             }
         ]
-    }
+    },
+    plugins: [
+        ...htmlPlugins
+    ]
 }
 
 module.exports = merge(baseConfig, envConfig)
