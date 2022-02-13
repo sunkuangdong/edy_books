@@ -4,6 +4,7 @@ const glob = require("glob")
 const path = require("path")
 const htmlWebpackPlugin = require("html-webpack-plugin")
 const HtmlAfterPlugin = require("./build/HtmlAfterPlugin")
+
 const mode = argv.mode || "development"
 const envConfig = require(`./build/webpack.${mode}.js`)
 const files = glob.sync("./src/web/views/**/*.entry.js")
@@ -31,7 +32,8 @@ const baseConfig = {
     entry: entries, // 自动配置多入口文件
     output: {
         path: path.join(__dirname, "./dist/assets"),
-        filename: "scripts/[name].[hash:5].bundle.js"
+        filename: "scripts/[name].[contenthash:5]bundle.js",
+        publicPath: "/", // 影响资源的引入路径
     },
     optimization: {
         runtimeChunk: "single",
