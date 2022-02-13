@@ -5,8 +5,12 @@ let config = {
     staticDir: path.join(__dirname, '../../', "web/assets") // 静态资源
 };
 
+if (false) {
+    console.log(1)
+}
+
 // 开发环境下的配置
-if (process.env.NODE_ENV !== 'production') {
+if (process.env.NODE_ENV !== 'development') {
     const devConfig = {
         port: 3033,
         cache: false,

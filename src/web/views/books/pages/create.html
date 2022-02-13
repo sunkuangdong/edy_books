@@ -1,18 +1,19 @@
-{% extends "../../layouts/layout.html" %}
+{% extends "@layouts/layout.html" %}
 
 {% block title %} 图书创建页 {% endblock %}
 
 {% block head %}
-<style>
-    body {
-        background-color: rebeccapurple;
-    }
-</style>
+<!-- injectcss -->
 {% endblock %}
 
 {% block content %}
-{% include "../../../components/nav/nav.html" %}
+
+{% include "@components/nav/nav.html" %}
 <h1>
     创建图书页面
 </h1>
+{% endblock %}
+
+{% block script %}
+<!-- injectjs -->
 {% endblock %}

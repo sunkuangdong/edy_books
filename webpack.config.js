@@ -3,6 +3,7 @@ const {merge} = require("webpack-merge")
 const glob = require("glob")
 const path = require("path")
 const htmlWebpackPlugin = require("html-webpack-plugin")
+const HtmlAfterPlugin = require("./build/HtmlAfterPlugin")
 const mode = argv.mode || "development"
 const envConfig = require(`./build/webpack.${mode}.js`)
 const files = glob.sync("./src/web/views/**/*.entry.js")
@@ -18,7 +19,8 @@ files.forEach(url => {
         htmlPlugins.push(new htmlWebpackPlugin({
                 filename: `../views/${pagesName}/pages/${template}.html`,
                 template: `./src/web/views/${pagesName}/pages/${template}.html`,
-                chunks: [entryKey]
+                chunks: [entryKey],
+                inject: false, // 不会自动插入到页面模板里
             }
         ))
         entries[entryKey] = url
@@ -29,7 +31,10 @@ const baseConfig = {
     entry: entries, // 自动配置多入口文件
     output: {
         path: path.join(__dirname, "./dist/assets"),
-        filename: "scripts/[name].bundle.js"
+        filename: "scripts/[name].[hash:5].bundle.js"
+    },
+    optimization: {
+        runtimeChunk: "single",
     },
     module: {
         rules: [
@@ -40,8 +45,14 @@ const baseConfig = {
         ]
     },
     plugins: [
-        ...htmlPlugins
-    ]
+        ...htmlPlugins,
+        new HtmlAfterPlugin()
+    ],
+    resolve: {
+        alias: {
+            "@": path.resolve("./src/web")
+        }
+    }
 }
 
 module.exports = merge(baseConfig, envConfig)
