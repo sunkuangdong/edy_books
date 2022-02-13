@@ -21,5 +21,3 @@ module.exports = {
         }),
     ],
 }
-
-module.exports = merge(baseConfig, envConfig)
